@@ -130,6 +130,17 @@ function buyProducts(item, amount) {
           chalk.green("Purchase Successful! You were charged $" + total)
         );
         console.log("----------------------------------");
+
+        connection.query(
+          "UPDATE products " +
+            "SET stock_quantity = '" +
+            newQuant +
+            "' " +
+            "WHERE product_name = '" +
+            item +
+            "'",
+          function(err, res) {}
+        );
       } else {
         console.log("----------------------------------");
         console.log(chalk.bgRed("NOT ENOUGH STOCK"));
